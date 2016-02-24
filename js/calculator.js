@@ -27,18 +27,10 @@ function init() {
       };
 
       gAnswer.innerText = total;
-
-    // console.log(total);
-    // console.log(gNumber1);
-    // console.log(gNumber2);
-    // console.log(basicOperation);
   }
   evaluate.addEventListener("click", basicCalculator, false);
 
-  // The basic calculator should just uses standard arithmetic to calculate the result.
-  // The trip cost calculator should let you calculate the cost of a trip, taking into account that:
-  // when the speed is less than 60, the formula is distance / mpg * cost
-  // when the speed is more than 60, the formula is `distance / (mpg - (speed - 60) * 2) * cost
+
   function tripCalculator() {
     var distance = Number(document.getElementById('trip-distance').value);
     var mpg = Number(document.getElementById('trip-mpg').value);
@@ -54,11 +46,6 @@ function init() {
     };
 
     tripAnswer.innerText = tripCost;
-
-    // console.log(distance);
-    // console.log(mpg);
-    // console.log(cost);
-    // console.log(speed);
 
   }
   evaluateTrip.addEventListener("click", tripCalculator, false)
@@ -87,23 +74,12 @@ function init() {
     var apr = Number(document.getElementById('mortgage-apr').value);
     var term = Number(document.getElementById('mortgage-term').value);
     var mortgageAnswer = document.getElementById('mortgage-answer-alert');
-    var aprOne = (1+apr);
     var monthlyMortgage;
-    console.log(loan)
-    console.log(apr)
-    console.log(term)
-    console.log(typeof termOne)
-    console.log(typeof term)
-    var power = function(base, exponent) {
-      var result = 1;
-      for (var count = 0; count < exponent; count++)
-        result *= base;
-      return result;
-    };
 
     function getMortgageCost() {
       console.log("mortgage cost works!")
-        return monthlyMortgage = loan * apr * (power(aprOne, term)) / (((power(aprOne, term)) - 1)
+        monthlyMortgage = loan * apr * (Math.pow((1+apr), term)) / ((Math.pow((1+apr), term)) - 1);
+        return monthlyMortgage;
     }
     getMortgageCost();
     mortgageAnswer.innerText = monthlyMortgage;
